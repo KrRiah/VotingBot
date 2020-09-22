@@ -3,9 +3,10 @@ import asyncio
 import datetime
 import random
 from urllib.request import urlopen
+from discord.ext import commands
+import os
 
-client=discord.Client()
-token='Njk1NTI3OTE0NTYwNTUzMDUw.Xobe2Q.VjfYCBWA8qBJ6svbHLEZajg8sDY'
+client = commands.Bot(command_prefix = '-')
 
 @client.event
 async def on_ready():
@@ -18,7 +19,7 @@ async def on_ready():
     while True:
         await client.change_presence(status=discord.Status.online, activity=discord.Game(name=messages[0]))
         messages.append(messages.pop(0))
-        await asyncio.sleep(6)
+        await asyncio.sleep(2)
 
 @client.event
 async def on_message(message):
@@ -161,8 +162,5 @@ async def on_message(message):
         print('<@' + str(message.author.id) + '> 님이 서버에서 개인메세지명령어를 사용했습니다.')
     
 
-client.run('Njk1NTI3OTE0NTYwNTUzMDUw.Xobe2Q.VjfYCBWA8qBJ6svbHLEZajg8sDY')
-
-
-
+client.run(os.environ['token'])
 
