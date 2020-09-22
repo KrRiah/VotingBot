@@ -6,7 +6,8 @@ from urllib.request import urlopen
 from discord.ext import commands
 import os
 
-client = commands.Bot(command_prefix = '')
+client=discord.Client()
+token='key'
 
 @client.event
 async def on_ready():
@@ -162,5 +163,4 @@ async def on_message(message):
         print('<@' + str(message.author.id) + '> 님이 서버에서 개인메세지명령어를 사용했습니다.')
     
 
-client.run(os.environ['token'])
-
+client.run(os.environ['key'])
